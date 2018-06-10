@@ -1,9 +1,9 @@
-import unittest 
+import unittest
 from credential import Credential
+import random
 import pyperclip
 
-
-class CredentialTest(unittest.TestCase):
+class credential_test(unittest.TestCase):
     """Test class that defines test cases for the credential class behaviours
         Args:
         unittest.TestCase:TestCase class that helps in creating cases
@@ -23,13 +23,29 @@ class CredentialTest(unittest.TestCase):
         self.assertTrue(self.new_profile.profile_email,"musyokaisaac98@gmail.com")
         self.assertTrue(self.new_profile.profile_password)
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_create_new_profile(self):
+        """
+        test create_new_profile to test if a new object can be saved
+        """
+        self.new_profile.save_profile()
+        self.assertEqual(len(Credential.profile_list),1)
 
-    # def test_create_new_profile(self):
-    #     """
-    #     test create_new_profile to test if a new object can be saved
-    #     """
-    #     self.new_profile.save_profile()
-    #     self.assertEqual(len(Credential.profile_list),1)
+    def tearDown(self):
+        """
+        tearDown() method that does clean up after each test case has run
+        """
+        Credential.profile_list = []
+    
+    def test_create_multiple_profiles(self):
+        """
+        test create_multiple_profile to test if multiple obejcts can be saved
+        """
+        self.new_profile.save_profile()
+        test_profile = Credential("CircleCL","musyoka","musyokaisaac98@gmail.com")
+        test_profile.save_profile()
+        self.assertEqual(len(Credential.profile_list),2)
+
+
+if __name__ == "__main__":
+        unittest.main()         
 

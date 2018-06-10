@@ -11,4 +11,11 @@ class Credential:
         self.profile_username = profile_username
         self.profile_email = profile_email
         self.profile_password = profile_password
- 
+    
+    def save_profile(self):
+        """
+        save_profile method saves user object into profile_list
+        """
+        Credential.profile_list.append(self)
+
+        
