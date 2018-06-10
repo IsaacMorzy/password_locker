@@ -52,6 +52,16 @@ class credential_test(unittest.TestCase):
         test_profile1.save_profile()
         prof = test_profile1.check_profile_exist("github","musyoka","musyokaisaac98@mail.com")
         self.assertTrue(prof)
+
+    def test_search_profile(self):
+        """
+        test search profile to test if a user can be able to search for a profile_email
+        """
+        test_profile1 = Credential("github","musyoka","musyokaisaac98@gmail.com")
+        test_profile1.save_profile()
+        search_result = test_profile1.search_profile("github")
+        self.assertEqual(test_profile1,search_result)
+
         
 if __name__ == "__main__":
         unittest.main()         

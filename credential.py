@@ -19,12 +19,19 @@ class Credential:
     @classmethod
     def check_profile_exist(cls,prof_name,prof_username=None,prof_email=None):
         """
-        check_profile_exist method checks if a similar identical account already test_check_user_exists
+        check_profile_exist method checks if a similar identical account  already test_check_user_exists
         """
         for prof in cls.profile_list:
             if (prof.profile_name==prof_name) or (prof.profile_username == prof_username) or (prof.profile_email == prof_email):
                 return True
             else:
                 return False
-
-        
+    @classmethod
+    def search_profile(cls,param):
+        """
+        search profile method that searches for profile(s) based on profile name , username or prof_email
+        """
+        for profile in cls.profile_list:
+            while (profile.profile_name==param) or (profile.profile_username==param) or (profile.profile_email==param):
+                return profile
+            
