@@ -1,4 +1,8 @@
 import pyperclip
+import string
+import random
+
+
 class Credential:
     '''
     class that generates new instances of user credentials
@@ -57,3 +61,14 @@ class Credential:
         display_profiles method that returns all the profiles
         """
         return cls.profile_list
+
+    @staticmethod
+    def generate_random_password(length=8):
+        """
+        generate_random_password method that returns a random password
+        Args:
+        length-the length of the password to be generated
+        """
+        chars = string.ascii_uppercase + string.ascii_lowercase + string.digits
+        generated_pass = ''.join(random.choice(chars) for char in range(length))
+        return generated_pass

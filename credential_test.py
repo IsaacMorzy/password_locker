@@ -1,6 +1,9 @@
 import unittest
 from credential import Credential
 import pyperclip
+import string
+import random
+
 
 class credential_test(unittest.TestCase):
     """Test class that defines test cases for the credential class behaviours
@@ -91,6 +94,17 @@ class credential_test(unittest.TestCase):
         test display_all_profiles that tests if a user can be able to view all their profiles
         """
         self.assertEqual(Credential.display_profiles(),Credential.profile_list)
+
+    def test_generate_random_password(self):
+        """
+        Test generate_random_password that tests if user can generate a random password with  specified length
+        """
+        test_profile1 = Credential("github","musyoka","musyokaisaac98@gmail.com")
+        generated_password = test_profile1.generate_random_password(6)
+        test_profile1.profile_password = generated_password
+        test_profile1.save_profile()
+        self.assertTrue(test_profile1.profile_password)
+
 
 
     
