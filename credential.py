@@ -50,3 +50,10 @@ class Credential:
         """
         profile_found = cls.search_profile(item)
         pyperclip.copy(profile_found.profile_password)
+
+    @classmethod
+    def display_profiles(cls):
+        """
+        display_profiles method that returns all the profiles
+        """
+        return cls.profile_list

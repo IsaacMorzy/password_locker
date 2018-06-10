@@ -86,6 +86,13 @@ class credential_test(unittest.TestCase):
         Credential.copy_credentials("github")
         self.assertEqual(test_profile1.profile_password,pyperclip.paste())
 
+    def test_display_all_profiles(self):
+        """
+        test display_all_profiles that tests if a user can be able to view all their profiles
+        """
+        self.assertEqual(Credential.display_profiles(),Credential.profile_list)
+
+
     
         
 if __name__ == "__main__":
