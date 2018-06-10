@@ -1,7 +1,4 @@
-import pyperclip
-import random
-import string
-import profile
+
 
 class Credential:
     '''
