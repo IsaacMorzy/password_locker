@@ -1,7 +1,6 @@
 import unittest
 from credential import Credential
-import random
-import pyperclip
+
 
 class credential_test(unittest.TestCase):
     """Test class that defines test cases for the credential class behaviours
@@ -45,7 +44,15 @@ class credential_test(unittest.TestCase):
         test_profile.save_profile()
         self.assertEqual(len(Credential.profile_list),2)
 
-
+    def test_profile_exist(self):
+        """
+        test profile exists to check if there is another identical profile
+        """
+        test_profile1 = Credential("github","musyoka","musyokaisaac98@gmail.com")
+        test_profile1.save_profile()
+        prof = test_profile1.check_profile_exist("github","musyoka","musyokaisaac98@mail.com")
+        self.assertTrue(prof)
+        
 if __name__ == "__main__":
         unittest.main()         
 

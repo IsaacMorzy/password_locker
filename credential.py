@@ -1,5 +1,3 @@
-
-
 class Credential:
     '''
     class that generates new instances of user credentials
@@ -17,5 +15,16 @@ class Credential:
         save_profile method saves user object into profile_list
         """
         Credential.profile_list.append(self)
+
+    @classmethod
+    def check_profile_exist(cls,prof_name,prof_username=None,prof_email=None):
+        """
+        check_profile_exist method checks if a similar identical account already test_check_user_exists
+        """
+        for prof in cls.profile_list:
+            if (prof.profile_name==prof_name) or (prof.profile_username == prof_username) or (prof.profile_email == prof_email):
+                return True
+            else:
+                return False
 
         
