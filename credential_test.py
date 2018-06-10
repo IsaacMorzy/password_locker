@@ -1,6 +1,6 @@
 import unittest
 from credential import Credential
-
+import pyperclip
 
 class credential_test(unittest.TestCase):
     """Test class that defines test cases for the credential class behaviours
@@ -62,6 +62,31 @@ class credential_test(unittest.TestCase):
         search_result = test_profile1.search_profile("github")
         self.assertEqual(test_profile1,search_result)
 
+    def tearDown(self):
+        """
+		tearDown() method that does clean up after each test case has run
+		"""
+        Credential.profile_list = []
+
+    def test_delete_profile(self):
+        """
+        test delete_profile to test if a user can be able to delete a particular profile
+        """
+        test_profile1 = Credential("github","musyoka","musyokaisaac98@mail.com")
+        test_profile1.save_profile()
+        test_profile1.delete_profile()
+        self.assertEqual(len(Credential.profile_list),0)
+    
+    def test_copy_credentials(self):
+        """
+        test copy_credentials to test if a user can be able to copy an item to the clipboard
+        """
+        test_profile1 = Credential("github","musyoka","musyokaisaac98@gmail.com","testPassword")
+        test_profile1.save_profile()
+        Credential.copy_credentials("github")
+        self.assertEqual(test_profile1.profile_password,pyperclip.paste())
+
+    
         
 if __name__ == "__main__":
         unittest.main()         

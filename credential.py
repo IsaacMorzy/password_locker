@@ -1,3 +1,4 @@
+import pyperclip
 class Credential:
     '''
     class that generates new instances of user credentials
@@ -35,3 +36,17 @@ class Credential:
             while (profile.profile_name==param) or (profile.profile_username==param) or (profile.profile_email==param):
                 return profile
             
+    def delete_profile(self):
+        """
+        delete profile method that deletes a specified profile
+        """
+        Credential.profile_list.remove(self)
+
+    
+    @classmethod
+    def copy_credentials(cls, item):
+        """
+        copy credentials method that  copies credentials to the clipboard
+        """
+        profile_found = cls.search_profile(item)
+        pyperclip.copy(profile_found.profile_password)
