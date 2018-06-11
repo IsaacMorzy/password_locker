@@ -39,3 +39,19 @@ class User:
                     return False
             else:
                 return False
+    
+    @classmethod
+    def change_userpass(cls,usern,new_pass):
+        """
+        change_userpass method changes the password of a given user
+        """
+        for user in cls.user_list:
+            if cls.find_user(usern):
+                user.password = new_pass
+                return user
+            else:
+                return
+
+    def user_delete_account(self):
+            User.user_list.remove(self)
+   

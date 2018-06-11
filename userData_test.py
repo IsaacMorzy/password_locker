@@ -51,7 +51,22 @@ class user_test(unittest.TestCase):
         confirm_user_exist = User.confirm_user("username", "password1")
         self.assertTrue(confirm_user_exist)
 
-
+    def test_user_change_pass(self):
+        """
+        test user change password test case to test if a user can be able to change their password test_create_new_account
+        """
+        test_u = User("username","password1")
+        test_u.save_user()
+        change_pass = test_u.change_userpass("username","password")
+        self.assertEqual(change_pass.password,"password")
+    def test_user_delete_account(self):
+        """
+        test user_delete_account to test if a user can be able to delete their account
+        """
+        self.test_user = User("username","password1")
+        self.test_user.save_user()
+        self.test_user.user_delete_account()
+        self.assertEqual(len(User.user_list), 0)
 
 if __name__ == "__main__":
     unittest.main()
