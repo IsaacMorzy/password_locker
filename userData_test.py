@@ -28,6 +28,21 @@ class user_test(unittest.TestCase):
         self.new_user.save_user()
         self.assertEqual(len(User.user_list),1)
 
+    def tearDown(self):
+        """
+    	tearDown() method that does clean up after each test case has run
+		"""
+        User.user_list = []
+    def test_check_user_exists(self):
+        """
+        test check user exists to test if a user exists or not
+        """
+        self.test_user = User("username","password1")
+        self.test_user.save_user()
+        found_user = User.find_user("username")
+        self.assertTrue(found_user)
+
+
 if __name__ == "__main__":
     unittest.main()
 

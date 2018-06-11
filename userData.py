@@ -14,5 +14,14 @@ class User:
         """
         User.user_list.append(self)
 
-
+    @classmethod
+    def find_user(cls, usern):
+        """
+        find_user method that checks if a username already exists
+        """
+        for user in cls.user_list:
+            if user.username == usern:
+                return True
+            else:
+                return False
     
