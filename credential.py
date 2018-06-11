@@ -63,7 +63,7 @@ class Credential:
         return cls.profile_list
 
     @staticmethod
-    def generate_random_password(length=8):
+    def generate_random_password(length=10):
         """
         generate_random_password method that returns a random password
         Args:
